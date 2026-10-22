@@ -1,0 +1,173 @@
+/* ===== TOKENS ===== */
+:root {
+    --cream: #FFEABD;
+    --paper: #FFF6E0;
+    --red: #880000;
+    --red-dark: #680000;
+    --ink: #222222;
+
+    --font-display: 'Anton', 'Impact', sans-serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+
+    --radius: 22px;
+    --container: 1200px;
+    --gutter: clamp(1.25rem, 4vw, 3rem);
+    --header-h: 52px; /* atualizado via JS com a altura real do header */
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: calc(var(--header-h) + 8px);
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: var(--cream);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+h1, h2, h3, p, ul, figure, address {
+    margin: 0;
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+address {
+    font-style: normal;
+}
+
+fieldset {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+}
+
+button {
+    font: inherit;
+    color: inherit;
+}
+
+:focus-visible {
+    outline: 3px solid var(--red);
+    outline-offset: 3px;
+}
+
+/* ===== LAYOUT ===== */
+.container {
+    width: 100%;
+    max-width: calc(var(--container) + var(--gutter) * 2);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+}
+
+/* ===== BOTÕES ===== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    padding: 0.8rem 1.4rem;
+    border: 2px solid transparent;
+    border-radius: 999px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.1;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.2s ease;
+}
+
+.btn:hover svg {
+    transform: translateX(4px);
+}
+
+.btn--lg {
+    padding: 1.05rem 1.9rem;
+    font-size: 1.05rem;
+}
+
+.btn--block {
+    width: 100%;
+}
+
+.btn--primary {
+    background: var(--red);
+    color: var(--cream);
+    box-shadow: 0 10px 24px -10px rgba(136, 0, 0, 0.7);
+}
+
+.btn--primary:hover {
+    background: var(--red-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 28px -10px rgba(136, 0, 0, 0.75);
+}
+
+.btn--ghost {
+    border-color: var(--ink);
+    color: var(--ink);
+    background: transparent;
+}
+
+.btn--ghost:hover {
+    background: var(--ink);
+    color: var(--cream);
+}
+
+/* ===== TIPOGRAFIA DE SEÇÃO ===== */
+.eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--red);
+}
+
+.eyebrow::before {
+    content: '';
+    width: 28px;
+    height: 2px;
+    background: currentColor;
+}
+
+/* ===== ANIMAÇÃO DE ENTRADA (controlada por main.js) ===== */
+.js [data-reveal] {
+    opacity: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .js [data-reveal] {
+        opacity: 1;
+    }
+}
